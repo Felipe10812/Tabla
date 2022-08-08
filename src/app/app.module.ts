@@ -5,6 +5,12 @@ import { AppComponent } from './app.component';
 // Componente de la tabla y modulos
 import { TablaComponent } from './tabla/tabla.component';
 import { MaterialModule } from './material/material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import {MatNativeDateModule} from '@angular/material/core';
+
+
 
 
 @NgModule({
@@ -16,7 +22,12 @@ import { MaterialModule } from './material/material.module';
     BrowserModule,
 
     // Importacion de los modulos
-    MaterialModule
+    MaterialModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    HttpClientModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
