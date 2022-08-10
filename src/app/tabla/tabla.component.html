@@ -1,32 +1,65 @@
-<h1>{{ "Hola mundo" | titlecase }}</h1>
+<div class="container">
+    <mat-toolbar>
+        <span>tabla</span>
+    </mat-toolbar>
 
-<!-- <mat-form-field appearance="standard">
-    <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
-</mat-form-field> -->
+    <div class="mat-elevation-z8" *ngIf="ELEMENT_DATA.length > 0">
 
-<div class="mat-elevation-z8">
+        <!-- Filtro -->
+        <mat-form-field appearance="standard">
+            <mat-label>Filtro</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Ingrese un valor" #input autocomplete="off">
+        </mat-form-field>
 
-    <table mat-table [dataSource]="dataSource" matSort>
+        <table mat-table [dataSource]="dataSource" matSort>
 
-        <!-- Generacion de las columnas -->
-        <ng-container *ngFor="let column of columns" [matColumnDef]="column.columnDef">
-            <th mat-header-cell *matHeaderCellDef>
-                {{column.header}}
-            </th>
-            <td mat-cell *matCellDef="let row">
-                {{column.cell(row)}}
-            </td>
-        </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <!-- Columnas -->
+            <!-- Position Column -->
+            <ng-container matColumnDef="position">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+                <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+            </ng-container>
 
-        <!-- Mensaje que aparecera cuendo no se encuentren datos en la busqueda -->
-        <tr class="mat-row" *matNoDataRow>
-            <!-- <td class="mat-cell" colspan="4">No se encontraron conincidencias con: "{{input.value}}"</td> -->
-        </tr>
-    </table>
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
 
-    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+            <!-- Weight Column -->
+            <ng-container matColumnDef="weight">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Weight </th>
+                <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="symbol">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Simbolo </th>
+                <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="acciones">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let element; let id" style="text-align: right;">
+                    <a class="pointer" matTooltip="Editar" style="color:rgb(53, 109, 109)">
+                        <mat-icon>edit</mat-icon>
+                    </a>
+                    <a class="pointer" (click)="eliminar(id)" matTooltip="Eliminar" style="color:rgb(216, 44, 44)">
+                        <mat-icon>delete</mat-icon>
+                    </a>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            <!-- Mensaje que aparecera cuendo no se encuentren datos en la busqueda -->
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No se encontraron coincidencias con: "{{input.value}}"</td>
+            </tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Selecciones una paginacion"></mat-paginator>
+    </div>
+    <h2 *ngIf="ELEMENT_DATA.length == 0">No hay datos </h2>
 </div>
