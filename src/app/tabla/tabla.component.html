@@ -1,7 +1,9 @@
 <div class="container">
-    <mat-toolbar>
-        <span>tabla</span>
-    </mat-toolbar>
+    <p>
+        <mat-toolbar>
+            <span>Tabla</span>
+        </mat-toolbar>
+    </p>
 
     <div class="mat-elevation-z8" *ngIf="ELEMENT_DATA.length > 0">
 
@@ -11,8 +13,10 @@
             <input matInput (keyup)="applyFilter($event)" placeholder="Ingrese un valor" #input autocomplete="off">
         </mat-form-field>
 
-        <table mat-table [dataSource]="dataSource" matSort>
+        <!-- Boton de agregar -->
+        <button mat-flat-button mat-raised-button color="warn" (click)="openDialog('200ms', '200ms')">Agregar valor</button>
 
+        <table mat-table [dataSource]="dataSource" matSort>
 
             <!-- Columnas -->
             <!-- Position Column -->
@@ -41,11 +45,11 @@
 
             <ng-container matColumnDef="acciones">
                 <th mat-header-cell *matHeaderCellDef></th>
-                <td mat-cell *matCellDef="let element; let id" style="text-align: right;">
-                    <a class="pointer" matTooltip="Editar" style="color:rgb(53, 109, 109)">
+                <td mat-cell *matCellDef="let element; let i = position" style="text-align: right;">
+                    <a class="pointer botonEditar" mat-flat-button matTooltip="Editar">
                         <mat-icon>edit</mat-icon>
                     </a>
-                    <a class="pointer" (click)="eliminar(id)" matTooltip="Eliminar" style="color:rgb(216, 44, 44)">
+                    <a class="pointer botonEliminar" mat-flat-button (click)="eliminar(position)" matTooltip="Eliminar">
                         <mat-icon>delete</mat-icon>
                     </a>
                 </td>

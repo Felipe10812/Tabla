@@ -4,6 +4,8 @@ import { PeriodicElement } from './tabla.component';
 @Injectable({
   providedIn: 'root'
 })
+
+const del = { position: '', name: '', weight: '', symbol: '' }
 export class TablaService {
 
   ELEMENT_DATA: PeriodicElement[] = [
@@ -25,8 +27,11 @@ export class TablaService {
     return this.ELEMENT_DATA.slice();
   }
 
+  
   // Posibles servicios 
-  eliminarDato( id: number ){
-    this.ELEMENT_DATA.splice(id, 1);
+  eliminarDato( position: number ){
+    this.ELEMENT_DATA.splice(position, 1);
   }
+
 }
+

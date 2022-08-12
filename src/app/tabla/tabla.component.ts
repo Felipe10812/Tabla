@@ -1,8 +1,10 @@
-import { Component, AfterViewInit, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { TablaService } from './tabla.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from '../dialog/dialog.component';
 
 
 export interface PeriodicElement {
@@ -30,9 +32,7 @@ export class TablaComponent implements OnInit{
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor( private _tablaservice: TablaService ){
-
-  }
+  constructor( private _tablaservice: TablaService, public dialog: MatDialog ){ }
 
   ngOnInit(): void {
     this.cargarElementos();
@@ -44,7 +44,7 @@ export class TablaComponent implements OnInit{
     this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
   }
 
-  // Siclo de vida de la paginacion 
+  // Ciclo de vida de la paginacion 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
@@ -61,13 +61,20 @@ export class TablaComponent implements OnInit{
   }
 
   // Eliminar 
-  eliminar( id: number ){
-    console.log(id)
+  eliminar( position: number ){
+    console.log(position)
     // Se obtiene del servicio
-    this._tablaservice.eliminarDato(id);
-    this.cargarElementos();
+    this._tablaservice.eliminarDato(position);
+    this.cargarElementos( );
   }
 
-  
-
+  // Dialog
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialog.open(DialogComponent, {
+      width: '250px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+  }
 }
+

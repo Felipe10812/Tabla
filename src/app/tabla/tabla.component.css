@@ -14,3 +14,11 @@ th {
     font-size: 14px;
     width: 100%;
 }
+
+.botonEliminar {
+    color:rgb(197, 64, 64)
+}
+
+.botonEditar{
+    color:rgb(53, 109, 109)
+}
