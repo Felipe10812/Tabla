@@ -5,7 +5,8 @@ import { PeriodicElement } from './tabla.component';
   providedIn: 'root'
 })
 
-const del = { position: '', name: '', weight: '', symbol: '' }
+// No se para que era 
+// const del = { position: '', name: '', weight: '', symbol: '' }
 export class TablaService {
 
   ELEMENT_DATA: PeriodicElement[] = [
@@ -26,12 +27,10 @@ export class TablaService {
   getElemento(){
     return this.ELEMENT_DATA.slice();
   }
-
   
-  // Posibles servicios 
-  eliminarDato( position: number ){
-    this.ELEMENT_DATA.splice(position, 1);
+  // Eliminar dato
+  eliminarDato( index: number ){
+    this.ELEMENT_DATA.splice(index, 1);
   }
 
 }
-

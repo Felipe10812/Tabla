@@ -1,0 +1,13 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.boton {
+  margin: 8px 8px 8px 0;
+}
+
+.botonCancelar {
+  color: rgb(0, 0, 0)
+}

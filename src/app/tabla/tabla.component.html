@@ -1,7 +1,7 @@
 <div class="container">
     <p>
         <mat-toolbar>
-            <span>Tabla</span>
+            <span>Tabla</span><br>
         </mat-toolbar>
     </p>
 
@@ -14,8 +14,12 @@
         </mat-form-field>
 
         <!-- Boton de agregar -->
-        <button mat-flat-button mat-raised-button color="warn" (click)="openDialog('200ms', '200ms')">Agregar valor</button>
+        <div class="centralo">
+            <button mat-flat-button mat-raised-button color="warn" (click)="openDialog('200ms', '200ms')">Agregar
+                valor</button>
+        </div><br>
 
+        <!-- Tabla -->
         <table mat-table [dataSource]="dataSource" matSort>
 
             <!-- Columnas -->
@@ -45,16 +49,19 @@
 
             <ng-container matColumnDef="acciones">
                 <th mat-header-cell *matHeaderCellDef></th>
-                <td mat-cell *matCellDef="let element; let i = position" style="text-align: right;">
+                <td mat-cell *matCellDef="let element; let i = index" style="text-align: right;">
+                    <!-- Editar -->
                     <a class="pointer botonEditar" mat-flat-button matTooltip="Editar">
                         <mat-icon>edit</mat-icon>
                     </a>
-                    <a class="pointer botonEliminar" mat-flat-button (click)="eliminar(position)" matTooltip="Eliminar">
+                    <!-- Eliminar -->
+                    <a class="pointer botonEliminar" mat-flat-button (click)="eliminar(i)" matTooltip="Eliminar">
                         <mat-icon>delete</mat-icon>
                     </a>
                 </td>
             </ng-container>
 
+            <!-- Hay que revisar esto -->
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
@@ -63,7 +70,7 @@
                 <td class="mat-cell" colspan="4">No se encontraron coincidencias con: "{{input.value}}"</td>
             </tr>
         </table>
-        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Selecciones una paginacion"></mat-paginator>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Seleccione una paginacion"></mat-paginator>
     </div>
-    <h2 *ngIf="ELEMENT_DATA.length == 0">No hay datos </h2>
+    <h2 *ngIf="ELEMENT_DATA.length == 0" style="text-align: center;">No hay datos </h2>
 </div>

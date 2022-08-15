@@ -16,9 +16,13 @@ th {
 }
 
 .botonEliminar {
-    color:rgb(197, 64, 64)
+    color: rgb(197, 64, 64)
 }
 
-.botonEditar{
-    color:rgb(53, 109, 109)
+.botonEditar {
+    color: rgb(53, 109, 109)
+}
+
+.centralo {
+    float: right;
 }

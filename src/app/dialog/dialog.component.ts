@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-dialog',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DialogComponent implements OnInit {
 
-  constructor() { }
+  datoForm! : FormGroup;
+  constructor( private formBuilder : FormBuilder) { }
 
   ngOnInit(): void {
+    this.datoForm = this.formBuilder.group({
+      name : ['',Validators.required],
+      weight: ['',Validators.required],
+      symbol: ['',Validators.required],
+    })
+  }
+
+  addElement(){
+    console.log(this.datoForm.value);
   }
 
 }

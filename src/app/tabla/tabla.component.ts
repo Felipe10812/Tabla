@@ -20,9 +20,9 @@ export interface PeriodicElement {
   styleUrls: ['./tabla.component.css']
 })
 
-export class TablaComponent implements OnInit{
+export class TablaComponent implements OnInit {
 
-  ELEMENT_DATA: PeriodicElement[] =[];
+  ELEMENT_DATA: PeriodicElement[] = [];
 
   // Nombre de las posibles columnas que se usaran 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'acciones'];
@@ -32,14 +32,14 @@ export class TablaComponent implements OnInit{
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor( private _tablaservice: TablaService, public dialog: MatDialog ){ }
+  constructor(private _tablaservice: TablaService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.cargarElementos();
   }
 
   // Carga los elementos desde el servicio
-  cargarElementos(){
+  cargarElementos() {
     this.ELEMENT_DATA = this._tablaservice.getElemento();
     this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
   }
@@ -61,20 +61,20 @@ export class TablaComponent implements OnInit{
   }
 
   // Eliminar 
-  eliminar( position: number ){
-    console.log(position)
+  eliminar(index: number) {
+    console.log(index)
     // Se obtiene del servicio
-    this._tablaservice.eliminarDato(position);
-    this.cargarElementos( );
+    this._tablaservice.eliminarDato(index);
+    this.cargarElementos();
   }
 
   // Dialog
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(DialogComponent, {
-      width: '250px',
+      width: '350px',
+      height: '450px',
       enterAnimationDuration,
       exitAnimationDuration,
     });
   }
 }
-
