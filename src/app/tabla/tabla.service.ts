@@ -33,9 +33,4 @@ export class TablaService {
     this.ELEMENT_DATA.splice(index, 1);
   }
 
-  agregarElemento( element: PeriodicElement ){
-    // this.ELEMENT_DATA.push(element);
-    return this.ELEMENT_DATA.unshift(element);
-  }
-
 }
