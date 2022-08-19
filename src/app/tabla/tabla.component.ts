@@ -1,6 +1,6 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { TablaService } from './tabla.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -26,13 +26,12 @@ export class TablaComponent implements OnInit {
 
   // Nombre de las posibles columnas que se usaran 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'acciones'];
-  dataSource!: MatTableDataSource<any>
+  dataSource!: MatTableDataSource<any>;
 
-  @ViewChild(MatTable) table!: MatPaginator;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private _tablaservice: TablaService, public dialog: MatDialog) { }
+  constructor(private _tablaService: TablaService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.cargarElementos();
@@ -40,7 +39,7 @@ export class TablaComponent implements OnInit {
 
   // Carga los elementos desde el servicio
   cargarElementos() {
-    this.ELEMENT_DATA = this._tablaservice.getElemento();
+    this.ELEMENT_DATA = this._tablaService.getElemento();
     this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
   }
 
@@ -64,15 +63,15 @@ export class TablaComponent implements OnInit {
   eliminar(index: number) {
     console.log(index)
     // Se obtiene del servicio
-    this._tablaservice.eliminarDato(index);
+    this._tablaService.eliminarDato(index);
     this.cargarElementos();
   }
 
-  // Dialog
+  // Agregar 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(DialogComponent, {
       width: '350px',
-      height: '450px',
+      height: '400px',
       enterAnimationDuration,
       exitAnimationDuration,
     });

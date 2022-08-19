@@ -19,7 +19,7 @@ export class TablaService {
     { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
     { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
     { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-    { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
+    { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' }
   ];
   constructor() { }
 
@@ -31,6 +31,11 @@ export class TablaService {
   // Eliminar dato
   eliminarDato( index: number ){
     this.ELEMENT_DATA.splice(index, 1);
+  }
+
+  agregarElemento( element: PeriodicElement ){
+    // this.ELEMENT_DATA.push(element);
+    return this.ELEMENT_DATA.unshift(element);
   }
 
 }

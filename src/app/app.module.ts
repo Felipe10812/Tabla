@@ -6,16 +6,18 @@ import { AppComponent } from './app.component';
 import { TablaComponent } from './tabla/tabla.component';
 import { MaterialModule } from './material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
-import {MatNativeDateModule} from '@angular/material/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { MatNativeDateModule } from '@angular/material/core';
 import { DialogComponent } from './dialog/dialog.component';
+import { EditarComponent } from './editar/editar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TablaComponent,
     DialogComponent,
+    EditarComponent,
   ],
   imports: [
     BrowserModule,

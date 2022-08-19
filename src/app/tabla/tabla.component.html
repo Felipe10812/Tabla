@@ -1,9 +1,14 @@
 <div class="container">
-    <p>
-        <mat-toolbar>
-            <span>Tabla</span><br>
-        </mat-toolbar>
-    </p>
+    <mat-toolbar>
+        <span class="prueba">Tabla</span><br>
+
+        <!-- Boton de agregar -->
+        <div class="centralo">
+            <button mat-flat-button mat-raised-button color="warn" (click)="openDialog('500ms', '200ms')">Agregar
+                valor</button>
+        </div>
+
+    </mat-toolbar>
 
     <div class="mat-elevation-z8" *ngIf="ELEMENT_DATA.length > 0">
 
@@ -12,12 +17,7 @@
             <mat-label>Filtro</mat-label>
             <input matInput (keyup)="applyFilter($event)" placeholder="Ingrese un valor" #input autocomplete="off">
         </mat-form-field>
-
-        <!-- Boton de agregar -->
-        <div class="centralo">
-            <button mat-flat-button mat-raised-button color="warn" (click)="openDialog('200ms', '200ms')">Agregar
-                valor</button>
-        </div><br>
+        <mat-divider></mat-divider>
 
         <!-- Tabla -->
         <table mat-table [dataSource]="dataSource" matSort>
@@ -47,11 +47,13 @@
                 <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
             </ng-container>
 
+            <!-- Botones -->
             <ng-container matColumnDef="acciones">
                 <th mat-header-cell *matHeaderCellDef></th>
                 <td mat-cell *matCellDef="let element; let i = index" style="text-align: right;">
                     <!-- Editar -->
-                    <a class="pointer botonEditar" mat-flat-button matTooltip="Editar">
+                    <a class="pointer botonEditar" mat-flat-button matTooltip="Editar"
+                        (click)="openDialog('500ms', '200ms')">
                         <mat-icon>edit</mat-icon>
                     </a>
                     <!-- Eliminar -->
@@ -70,7 +72,8 @@
                 <td class="mat-cell" colspan="4">No se encontraron coincidencias con: "{{input.value}}"</td>
             </tr>
         </table>
-        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Seleccione una paginacion"></mat-paginator>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
     </div>
     <h2 *ngIf="ELEMENT_DATA.length == 0" style="text-align: center;">No hay datos </h2>
 </div>
