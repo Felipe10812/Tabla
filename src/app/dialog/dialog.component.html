@@ -6,7 +6,7 @@
 
             <mat-form-field appearance="outline">
                 <mat-label>Intruzca un nombre</mat-label>
-                <input formControlName="name" matInput autocomplete="off" placeholder="Nombre">
+                <input formControlName="name"  matInput autocomplete="off" placeholder="Nombre">
             </mat-form-field>
 
             <mat-form-field appearance="outline">
@@ -20,8 +20,8 @@
             </mat-form-field>
         </form>
     </div>
-    <div mat-dialog-actions [align]="'end'">
-        <button mat-flat-button color="primary" [mat-dialog-close] cdkFocusInitial class="boton" [disabled]="datoForm.invalid" (click)="addElement()"
+    <div class="btn" mat-dialog-actions [align]="'end'">
+        <button mat-flat-button color="primary" [mat-dialog-close]  class="boton" [disabled]="datoForm.invalid" (click)="addElement()"
             type="submit">Agregar</button>
         <button mat-flat-button color="accent" mat-dialog-close>Cancelar</button>
     </div>

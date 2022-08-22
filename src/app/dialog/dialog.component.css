@@ -16,3 +16,8 @@
   width: 100%;
 }
 
+.btn{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
