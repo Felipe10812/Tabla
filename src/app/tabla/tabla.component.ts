@@ -1,10 +1,11 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { TablaService } from './tabla.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
+import { ElementoS } from '../elemento-s';
 
 
 export interface PeriodicElement {
@@ -26,11 +27,17 @@ export class TablaComponent implements OnInit {
 
   // Nombre de las posibles columnas que se usaran 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'acciones'];
-  dataSource!: MatTableDataSource<any>;
 
+  // Ni idea de si funcionara :)
+  dataSource = new MatTableDataSource<ElementoS>(this.ELEMENT_DATA);
+  
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
+  // No se si servira todo el viewchild
+  @ViewChild(MatTable) Tabla!: MatTable<ElementoS>;
+
+  // No tuve que modificar nada
   constructor(private _tablaService: TablaService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -69,11 +76,23 @@ export class TablaComponent implements OnInit {
 
   // Agregar 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(DialogComponent, {
+    const dialogl = this.dialog.open(DialogComponent, {
+      data: new ElementoS("", 0, 0, "") ,
       width: '350px',
       height: '400px',
       enterAnimationDuration,
       exitAnimationDuration,
     });
+    
+    dialogl.afterClosed().subscribe(art => {
+      if (art != undefined)
+      this.prueba(art);
+    });
+  }
+
+  prueba( art: ElementoS){
+    console.log(art);
+    this.ELEMENT_DATA.unshift(new ElementoS (art.name,art.position, art.weight, art.symbol ));
+    this.Tabla.renderRows();
   }
 }

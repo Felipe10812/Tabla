@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { PeriodicElement } from './tabla.component';
+import { ElementoS } from '../elemento-s';
 
 @Injectable({
   providedIn: 'root'
@@ -21,16 +22,21 @@ export class TablaService {
     { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
     { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' }
   ];
+
   constructor() { }
 
   // Envia los elementos 
-  getElemento(){
+  getElemento() {
     return this.ELEMENT_DATA.slice();
   }
-  
+
   // Eliminar dato
-  eliminarDato( index: number ){
+  eliminarDato(index: number) {
     this.ELEMENT_DATA.splice(index, 1);
   }
+
+  /* agregar(art: ElementoS){
+    this.ELEMENT_DATA.unshift(new ElementoS (art.name,art.position, art.weight, art.symbol ));
+  } */
 
 }

@@ -2,27 +2,27 @@
     <h2 mat-dialog-title>Agregar dato</h2>
 
     <div mat-dialog-content>
-        <form [formGroup]="datoForm" (ngSubmit)="addElement()">
+        <form [formGroup]="datoForm">
 
             <mat-form-field appearance="outline">
                 <mat-label>Intruzca un nombre</mat-label>
-                <input formControlName="name" matInput autocomplete="off" [(ngModel)]="element.name" placeholder="Nombre">
+                <input formControlName="name" matInput autocomplete="off" [(ngModel)]="data.name" placeholder="Nombre">
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Intruzca el peso</mat-label>
-                <input formControlName="weight" matInput autocomplete="off" [(ngModel)]="element.weight" placeholder="weight" type="number">
+                <input formControlName="weight" matInput autocomplete="off" [(ngModel)]="data.weight" placeholder="weight" type="number">
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Intruzca el simbolo</mat-label>
-                <input formControlName="symbol" matInput autocomplete="off" [(ngModel)]="element.symbol" placeholder="Simbolo">
+                <input formControlName="symbol" matInput autocomplete="off" [(ngModel)]="data.symbol" placeholder="Simbolo">
             </mat-form-field>
         </form>
     </div>
-    <div mat-dialog-actions [align]="'end'">
-        <button mat-flat-button color="primary" [mat-dialog-close]="element" class="boton" [disabled]="datoForm.invalid" (click)="addElement()"
-            type="submit" cdkFocusInitial>Agregar</button>
+    
+    <div mat-dialog-actions>
+        <button mat-flat-button color="primary" [mat-dialog-close]="data" class="boton" [disabled]="datoForm.invalid">Agregar</button>
         <button mat-flat-button color="accent" mat-dialog-close>Cancelar</button>
     </div>
 </div>
