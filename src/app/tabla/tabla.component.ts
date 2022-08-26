@@ -5,7 +5,6 @@ import { MatPaginator } from '@angular/material/paginator';
 import { TablaService } from './tabla.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
-import { ElementoS } from '../elemento-s';
 
 
 export interface PeriodicElement {
@@ -29,26 +28,24 @@ export class TablaComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'acciones'];
 
   // Ni idea de si funcionara :)
-  dataSource = new MatTableDataSource<ElementoS>(this.ELEMENT_DATA);
+  // Si funciono pero no creo que sea de la forma correcta pero no se que mas hacer
+  dataSource = new MatTableDataSource<any>(this.ELEMENT_DATA);
   
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-
-  // No se si servira todo el viewchild
-  @ViewChild(MatTable) Tabla!: MatTable<ElementoS>;
 
   // No tuve que modificar nada
   constructor(private _tablaService: TablaService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.cargarElementos();
+    /* this.cargarElementos(); */
   }
 
   // Carga los elementos desde el servicio
-  cargarElementos() {
+  /* cargarElementos() {
     this.ELEMENT_DATA = this._tablaService.getElemento();
     this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
-  }
+  } */
 
   // Ciclo de vida de la paginacion 
   ngAfterViewInit() {
@@ -68,31 +65,20 @@ export class TablaComponent implements OnInit {
 
   // Eliminar 
   eliminar(index: number) {
-    console.log(index)
+    /* console.log(index)
     // Se obtiene del servicio
     this._tablaService.eliminarDato(index);
-    this.cargarElementos();
+    this.cargarElementos(); */
   }
 
   // Agregar 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     const dialogl = this.dialog.open(DialogComponent, {
-      data: new ElementoS("", 0, 0, "") ,
       width: '350px',
       height: '400px',
       enterAnimationDuration,
       exitAnimationDuration,
-    });
-    
-    dialogl.afterClosed().subscribe(art => {
-      if (art != undefined)
-      this.prueba(art);
-    });
+    })
   }
 
-  prueba( art: ElementoS){
-    console.log(art);
-    this.ELEMENT_DATA.unshift(new ElementoS (art.name,art.position, art.weight, art.symbol ));
-    this.Tabla.renderRows();
-  }
 }

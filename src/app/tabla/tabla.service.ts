@@ -1,16 +1,24 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { PeriodicElement } from './tabla.component';
-import { ElementoS } from '../elemento-s';
 
 @Injectable({
   providedIn: 'root'
 })
 
-// No se para que era 
-// const del = { position: '', name: '', weight: '', symbol: '' }
 export class TablaService {
 
-  ELEMENT_DATA: PeriodicElement[] = [
+  constructor(private http: HttpClient) { }
+
+  postElement( data: any){
+    return this.http.post<any>("http://localhost:3000/PeriodicElement/", data);
+  }
+  getElement( ){
+    return this.http.get<any>("http://localhost:3000/PeriodicElement");
+  }
+}
+
+
+/* ELEMENT_DATA: PeriodicElement[] = [
     { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
     { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
     { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
@@ -21,22 +29,4 @@ export class TablaService {
     { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
     { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
     { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' }
-  ];
-
-  constructor() { }
-
-  // Envia los elementos 
-  getElemento() {
-    return this.ELEMENT_DATA.slice();
-  }
-
-  // Eliminar dato
-  eliminarDato(index: number) {
-    this.ELEMENT_DATA.splice(index, 1);
-  }
-
-  /* agregar(art: ElementoS){
-    this.ELEMENT_DATA.unshift(new ElementoS (art.name,art.position, art.weight, art.symbol ));
-  } */
-
-}
+  ]; */
