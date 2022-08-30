@@ -1,21 +1,94 @@
 {
   "PeriodicElement": [
     {
-      "name": "ed",
-      "weight": 1,
-      "symbol": "d",
-      "position": 21,
+      "name": "Hydrogen",
+      "weight": 1.0079,
+      "symbol": "H",
       "id": 1
-    }
-  ],
-  "comments": [
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "name": "Helium",
+      "weight": 4.0026,
+      "symbol": "He",
+      "id": 2
+    },
+    {
+      "name": "Lithium",
+      "weight": 6.941,
+      "symbol": "Li",
+      "id": 3
+    },
+    {
+      "name": "Beryllium",
+      "weight": 9.0122,
+      "symbol": "Be",
+      "id": 4
+    },
+    {
+      "name": "Boron",
+      "weight": 10.811,
+      "symbol": "B",
+      "id": 5
+    },
+    {
+      "name": "Carbon",
+      "weight": 12.0107,
+      "symbol": "C",
+      "id": 6
+    },
+    {
+      "name": "Nitrogen",
+      "weight": 14.0067,
+      "symbol": "N",
+      "id": 7
+    },
+    {
+      "name": "Oxygen",
+      "weight": 15.9994,
+      "symbol": "O",
+      "id": 8
+    },
+    {
+      "name": "Fluorine",
+      "weight": 18.9984,
+      "symbol": "F",
+      "id": 9
+    },
+    {
+      "name": "Neon",
+      "weight": 20.1797,
+      "symbol": "Ne",
+      "id": 10
+    },
+    {
+      "name": "Prueba ",
+      "weight": 0.2323,
+      "symbol": "P",
+      "id": 11
+    },
+    {
+      "name": "d",
+      "weight": 43,
+      "symbol": "d",
+      "id": 12
+    },
+    {
+      "name": "r",
+      "weight": 43,
+      "symbol": "f",
+      "id": 13
+    },
+    {
+      "name": "b",
+      "weight": 4,
+      "symbol": "b",
+      "id": 14
+    },
+    {
+      "name": "P",
+      "weight": 105,
+      "symbol": "G",
+      "id": 15
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }

@@ -1,13 +1,8 @@
 <div>
-    <h2 mat-dialog-title>Agregar dato</h2>
+    <h2 mat-dialog-title>{{actionBta}}</h2>
 
     <div mat-dialog-content>
         <form [formGroup]="datoForm">
-
-            <mat-form-field appearance="outline">
-                <mat-label>Intruzca la posicion</mat-label>
-                <input formControlName="position" matInput autocomplete="off" placeholder="Posicion" type="number">
-            </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Intruzca un nombre</mat-label>
@@ -27,7 +22,7 @@
     </div>
     
     <div class="btn" mat-dialog-actions>
-        <button mat-flat-button color="primary" class="boton" [disabled]="datoForm.invalid" (click)="addElement()">Agregar</button>
+        <button mat-flat-button mat-stroked-button color="primary" class="boton" [disabled]="datoForm.invalid" (click)="addElement(); openSnackBar('Elemento guardado', 'Cerrar')">{{actionBtn}}</button>
         <button mat-flat-button color="accent" mat-dialog-close>Cancelar</button>
     </div>
 </div>

@@ -25,10 +25,11 @@ th {
     color: rgb(53, 109, 109)
 }
 
-.centralo {
-    text-align : right;
-}
-
 .prueba {
     flex: 1 1 auto;
+}
+
+.container {
+    max-width: 1500px;
+    margin:  0 auto;
 }

@@ -10,14 +10,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatNativeDateModule } from '@angular/material/core';
 import { DialogComponent } from './dialog/dialog.component';
-import { EditarComponent } from './editar/editar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TablaComponent,
     DialogComponent,
-    EditarComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,6 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { TablaService } from './tabla.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -27,30 +27,73 @@ export class TablaComponent implements OnInit {
   // Nombre de las posibles columnas que se usaran 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'acciones'];
 
-  // Ni idea de si funcionara :)
-  // Si funciono pero no creo que sea de la forma correcta pero no se que mas hacer
-  dataSource = new MatTableDataSource<any>(this.ELEMENT_DATA);
-  
+  dataSource = new MatTableDataSource<any>;
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   // No tuve que modificar nada
-  constructor(private _tablaService: TablaService, public dialog: MatDialog) { }
+  constructor(private elementos: TablaService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    /* this.cargarElementos(); */
+    this.getElementos();
   }
 
   // Carga los elementos desde el servicio
-  /* cargarElementos() {
-    this.ELEMENT_DATA = this._tablaService.getElemento();
-    this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
-  } */
+  getElementos() {
+    this.elementos.getElement().subscribe({
+      next: (res) => {
+        // Ciclo de vida de la paginacion 
+        this.dataSource = new MatTableDataSource(res);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      },
+      error: (err) => {
+        alert('Error')
+      }
+    })
+  }
 
-  // Ciclo de vida de la paginacion 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+  // Agregar 
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    const dialogl = this.dialog.open(DialogComponent, {
+      width: '350px',
+      height: '400px',
+      enterAnimationDuration,
+      exitAnimationDuration
+    }).afterClosed().subscribe(val => {
+      if (val === 'Guardar') {
+        this.getElementos();
+      }
+    })
+  }
+
+  //Editar 
+  editElement(row: any, enterAnimationDuration: string, exitAnimationDuration: string,) {
+    this.dialog.open(DialogComponent, {
+      width: '350px',
+      height: '400px',
+      data: row,
+      enterAnimationDuration,
+      exitAnimationDuration,
+    }).afterClosed().subscribe(val => {
+      if (val === 'Actualizar') {
+        this.getElementos();
+      }
+    })
+  }
+
+  // Eliminar 
+  deleteElement(id: number) {
+    this.elementos.deleteElement(id)
+      .subscribe({
+        next: (res) => {
+          this.getElementos();
+        },
+        error: () => {
+          alert("Error al elimiar el elemento");
+        }
+      })
   }
 
   // Filtro 
@@ -61,24 +104,6 @@ export class TablaComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
-  }
-
-  // Eliminar 
-  eliminar(index: number) {
-    /* console.log(index)
-    // Se obtiene del servicio
-    this._tablaService.eliminarDato(index);
-    this.cargarElementos(); */
-  }
-
-  // Agregar 
-  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    const dialogl = this.dialog.open(DialogComponent, {
-      width: '350px',
-      height: '400px',
-      enterAnimationDuration,
-      exitAnimationDuration,
-    })
   }
 
 }
