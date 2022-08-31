@@ -5,6 +5,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { TablaService } from './tabla.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 export interface PeriodicElement {
@@ -25,7 +26,7 @@ export class TablaComponent implements OnInit {
   ELEMENT_DATA: PeriodicElement[] = [];
 
   // Nombre de las posibles columnas que se usaran 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'acciones'];
+  displayedColumns: string[] = ['id', 'name', 'weight', 'symbol', 'acciones'];
 
   dataSource = new MatTableDataSource<any>;
 
@@ -33,7 +34,7 @@ export class TablaComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   // No tuve que modificar nada
-  constructor(private elementos: TablaService, public dialog: MatDialog) { }
+  constructor(private elementos: TablaService, public dialog: MatDialog, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.getElementos();
@@ -84,16 +85,18 @@ export class TablaComponent implements OnInit {
   }
 
   // Eliminar 
-  deleteElement(id: number) {
+  deleteElement(id: number, message: string, action: string) {
     this.elementos.deleteElement(id)
       .subscribe({
         next: (res) => {
           this.getElementos();
+          let snackBarRef = this.snackBar.open(message, action, { duration: 2000 });
         },
         error: () => {
           alert("Error al elimiar el elemento");
         }
       })
+
   }
 
   // Filtro 

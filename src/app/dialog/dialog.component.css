@@ -16,9 +16,8 @@
   width: 100%;
 }
 
-.btn{
+.btn {
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
-

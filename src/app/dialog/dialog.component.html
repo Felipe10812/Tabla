@@ -20,9 +20,10 @@
             </mat-form-field>
         </form>
     </div>
-    
+
     <div class="btn" mat-dialog-actions>
-        <button mat-flat-button mat-stroked-button color="primary" class="boton" [disabled]="datoForm.invalid" (click)="addElement(); openSnackBar('Elemento guardado', 'Cerrar')">{{actionBtn}}</button>
+        <button mat-flat-button mat-stroked-button color="primary" class="boton" [disabled]="datoForm.invalid"
+            (click)="addElement(); openSnackBar('Elemento guardado', 'Cerrar')">{{actionBtn}}</button>
         <button mat-flat-button color="accent" mat-dialog-close>Cancelar</button>
     </div>
 </div>

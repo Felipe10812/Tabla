@@ -69,15 +69,6 @@ export class DialogComponent implements OnInit {
   }
 
   openSnackBar(message: string, action: string) {
-    let snackBarRef = this.snackBar.open(message, action, {duration: 2000});
-
-    snackBarRef.afterDismissed().subscribe(() => {
-
-    });
-
-    snackBarRef.onAction().subscribe(() => {
-
-    });
-
+    let snackBarRef = this.snackBar.open(message, action, { duration: 2000 });
   }
 }

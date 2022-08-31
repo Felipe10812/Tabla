@@ -2,7 +2,7 @@
   "PeriodicElement": [
     {
       "name": "Hydrogen",
-      "weight": 1.0079,
+      "weight": 1.0078,
       "symbol": "H",
       "id": 1
     },
@@ -31,28 +31,16 @@
       "id": 5
     },
     {
-      "name": "Carbon",
-      "weight": 12.0107,
-      "symbol": "C",
-      "id": 6
-    },
-    {
       "name": "Nitrogen",
       "weight": 14.0067,
       "symbol": "N",
       "id": 7
     },
     {
-      "name": "Oxygen",
+      "name": "Oxigeno",
       "weight": 15.9994,
       "symbol": "O",
       "id": 8
-    },
-    {
-      "name": "Fluorine",
-      "weight": 18.9984,
-      "symbol": "F",
-      "id": 9
     },
     {
       "name": "Neon",
@@ -73,22 +61,10 @@
       "id": 12
     },
     {
-      "name": "r",
-      "weight": 43,
-      "symbol": "f",
+      "name": "Hidrocido",
+      "weight": 120.25,
+      "symbol": "HX",
       "id": 13
-    },
-    {
-      "name": "b",
-      "weight": 4,
-      "symbol": "b",
-      "id": 14
-    },
-    {
-      "name": "P",
-      "weight": 105,
-      "symbol": "G",
-      "id": 15
     }
   ]
 }
