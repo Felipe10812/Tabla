@@ -65,6 +65,12 @@
       "weight": 120.25,
       "symbol": "HX",
       "id": 13
+    },
+    {
+      "name": "Hidrocarburo CX",
+      "weight": 11.98,
+      "symbol": "HDX",
+      "id": 14
     }
   ]
 }
