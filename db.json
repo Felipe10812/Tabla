@@ -1,0 +1,76 @@
+{
+  "PeriodicElement": [
+    {
+      "name": "Hydrogen",
+      "weight": 1.0078,
+      "symbol": "H",
+      "id": 1
+    },
+    {
+      "name": "Helium",
+      "weight": 4.0026,
+      "symbol": "He",
+      "id": 2
+    },
+    {
+      "name": "Lithium",
+      "weight": 6.941,
+      "symbol": "Li",
+      "id": 3
+    },
+    {
+      "name": "Beryllium",
+      "weight": 9.0122,
+      "symbol": "Be",
+      "id": 4
+    },
+    {
+      "name": "Boron",
+      "weight": 10.811,
+      "symbol": "B",
+      "id": 5
+    },
+    {
+      "name": "Nitrogen",
+      "weight": 14.0067,
+      "symbol": "N",
+      "id": 7
+    },
+    {
+      "name": "Oxigeno",
+      "weight": 15.9994,
+      "symbol": "O",
+      "id": 8
+    },
+    {
+      "name": "Neon",
+      "weight": 20.1797,
+      "symbol": "Ne",
+      "id": 10
+    },
+    {
+      "name": "Prueba ",
+      "weight": 0.2323,
+      "symbol": "P",
+      "id": 11
+    },
+    {
+      "name": "d",
+      "weight": 43,
+      "symbol": "d",
+      "id": 12
+    },
+    {
+      "name": "Hidrocido",
+      "weight": 120.25,
+      "symbol": "HX",
+      "id": 13
+    },
+    {
+      "name": "Hidrocarburo CX",
+      "weight": 11.98,
+      "symbol": "HDX",
+      "id": 14
+    }
+  ]
+}
